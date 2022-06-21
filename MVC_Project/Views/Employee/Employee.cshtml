@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "Employee details";
+    <h4>Employee Records</h4>
+    string[] TableHeaders = new string[] {"employee_id"
+      ,"employee_salary"
+      ,"employee_skillset"};
+}
+
+<div class="table">
+    <table>
+        <thead>
+            <tr>
+                @{
+                    foreach(var head in TableHeaders)
+                    {
+                                <th>
+                                @head &nbsp;&nbsp;&nbsp;&nbsp;
+                                </th>
+                    }
+                }
+                
+            </tr>
+        </thead>
+        @{
+            if(Model != null)
+            {
+                foreach(var data in Model)
+                {
+                           <tr>
+                            <td>@data.Id</td>
+                            <td>@data.Salary</td>
+                            <td>@data.Skillset</td>
+                            </tr> 
+                }
+            }
+        }
+        
+    </table>
+    </div> 
+    
+
+    <br/>
+   
+    <form action="DeleteEmployee" method="post">
+        <h4>To delete Employee Record Enter </h4>
+        <br />
+    <label>Existing Employee id</label>
+    <input type="text" id="empid" name="empid"/>
+          
+    <input  type="submit" id="btndelete" value="Delete" onclick="location.href='@Url.Action("DeleteEmployee","Employee")'"/>
+    </form>
+
+    <form action="UpdateEmployee" method="post">
+        <br />
+    <h4>To Update Employee Record Enter </h4>
+    <br />
+    <label>Existing Employee id</label>
+    <input type="text" id="empid1" name="empid1"/>
+    
+    <br/>
+    <label>Updated Employee salary</label>
+    <input type="text" id="empsalary" name="empsalary"/>
+    <br/>
+    <label>Updated Employee skillset</label>
+    <input type="text" id ="empskillset" name="empskillset"/>
+    <br />
+    <input  type="submit" id="btnupdate" value="Update" onclick="location.href='@Url.Action("UpdateEmployee","Employee")'"/>
+    </form>
+
+    <form action="AddEmployee" method="post">
+        <br />
+        <h4>To Insert new Employee Record Enter </h4>
+    <label>New Employee id</label>
+    <input type="text" id="empid2" name="empid2"/>
+    
+    <br/>
+    <label>Employee salary</label>
+    <input type="text" id="empsalary2" name="empsalary2"/>
+    <br/>
+    <label>Employee skillset</label>
+    <input type="text" id ="empskillset2" name="empskillset2"/>
+    <br />
+    <input  type="submit" id="btninsert" value="Insert" onclick="location.href='@Url.Action("AddEmployee","Employee")'"/>
+    </form>
+
+ 
